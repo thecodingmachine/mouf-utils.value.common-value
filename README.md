@@ -5,7 +5,12 @@ This package contains a set of classes commonly implementing the [ValueInterface
 
 Here is a list of all classes available in this package:
 
-- **GetParamValue**: an object representing a GET parameter passed in the web query.
+- **GetParam**: an object representing a GET parameter passed in the web query.
+- **PostParam**: an object representing a POST parameter passed in the web query.
+- **RequestParam**: an object representing a parameter from the $_REQUEST superglobal passed in the web query.
+- **ArrayLookup**: an object representing one value from an array.
+- **ExceptionValue**: an object that throws an exception each time we try to evaluate it.
+
 
 Mouf package
 ------------

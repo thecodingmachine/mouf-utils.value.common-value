@@ -7,18 +7,19 @@ namespace Mouf\Utils\Value;
  * 
  * @author David Négrier
  */
-class GetParamValue implements ScalarValueInterface, ArrayValueInterface {
+class GetParam implements ScalarValueInterface, ArrayValueInterface {
 	
 	private $paramName;
 	private $defaultValue;
 	
 	/**
+	 * @Important $paramName
 	 * @param string $paramName The GET parameter this object represents
-	 * @param string|ScalarValueInterface|ArrayValueInterface $defaultValue The default value to use if the 
+	 * @param string|ScalarValueInterface|ArrayValueInterface $defaultValue The default value to use if the parameter does not exist.
 	 */
 	public function __construct($paramName = null, $defaultValue = null) {
 		$this->paramName = $paramName;
-		$this->defaultName = $defaultName;
+		$this->defaultValue = $defaultValue;
 	}
 	
 	/**
@@ -27,14 +28,14 @@ class GetParamValue implements ScalarValueInterface, ArrayValueInterface {
 	 * @return mixed
 	 */
 	public function val() {
-		if (isset($_GET[$paramName])) {
-			$value = $_GET[$paramName];
+		if (isset($_GET[$this->paramName])) {
+			$value = $_GET[$this->paramName];
 			if (get_magic_quotes_gpc()==1)
 			{
 				// we check first for arrays
 				if (is_array($value)){
 					if (!array_walk_recursive($value, "stripslashes")) {
-						throw new \Exception('<b>Error!</b> An error occured while walking GET array "'.$paramName.'".');
+						throw new \Exception('<b>Error!</b> An error occured while walking GET array "'.$this->paramName.'".');
 					}
 						
 					return $value;
@@ -50,8 +51,23 @@ class GetParamValue implements ScalarValueInterface, ArrayValueInterface {
 			if ($this->defaultValue instanceof ValueInterface) {
 				return $this->defaultValue->val();
 			} else {
-				$this->defaultValue;
+				return $this->defaultValue;
 			}
+		}
+	}
+	
+	/**
+	 * A casting to a string will return the parameter value, if it is a string.
+	 * If it is an array, it will return "[Array]".
+	 * 
+	 * @return string
+	 */
+	public function __toString() {
+		$val = $this->val();
+		if (is_string($val)) {
+			return $val;
+		} else {
+			return "[Array]";
 		}
 	}
 }
