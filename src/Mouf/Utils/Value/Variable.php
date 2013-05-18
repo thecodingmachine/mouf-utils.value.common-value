@@ -6,7 +6,7 @@ namespace Mouf\Utils\Value;
  * 
  * @author David Négrier
  */
-class Variable implements ValueInterface {
+class Variable implements ValueInterface, VariableInterface {
 	
 	/**
 	 * The value of our variable.
@@ -16,7 +16,6 @@ class Variable implements ValueInterface {
 	protected $value;
 	
 	/**
-	 * @Important $value
 	 * @param ValueInterface|string $value The value of our variable.
 	 */
 	public function __construct($value = null) {

@@ -28,8 +28,8 @@ class RequestParam implements ScalarValueInterface, ArrayValueInterface {
 	 * @return mixed
 	 */
 	public function val() {
-		if (isset($_POST[$this->paramName])) {
-			$value = $_POST[$this->paramName];
+		if (isset($_REQUEST[$this->paramName])) {
+			$value = $_REQUEST[$this->paramName];
 			if (get_magic_quotes_gpc()==1)
 			{
 				// we check first for arrays
