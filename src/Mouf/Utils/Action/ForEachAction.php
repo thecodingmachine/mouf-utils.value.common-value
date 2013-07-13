@@ -55,7 +55,7 @@ class ForEachAction implements ActionInterface {
 			if ($this->value != null) {
 				$this->value->setValue($value);
 			}
-			foreach ($actions as $action) {
+			foreach ($this->actions as $action) {
 				$action->run();
 			}
 		}

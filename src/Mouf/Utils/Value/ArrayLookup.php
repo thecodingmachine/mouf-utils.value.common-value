@@ -40,7 +40,7 @@ class ArrayLookup implements ValueInterface {
 		} else {
 			$key = $this->key;
 		}
-		if ($this->array instanceof ScalarValueInterface) {
+		if ($this->array instanceof ArrayValueInterface) {
 			$array = $this->array->val();
 		} else {
 			$array = $this->array;
