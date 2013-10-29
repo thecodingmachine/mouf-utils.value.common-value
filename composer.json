@@ -19,7 +19,9 @@
     },
     "autoload": {
         "psr-0": {
-            "Mouf": "src/"
+            "Mouf\\Utils\\Action": "src/",
+            "Mouf\\Utils\\Common": "src/",
+            "Mouf\\Utils\\Value": "src/"
         }
     },
     "extra": {
