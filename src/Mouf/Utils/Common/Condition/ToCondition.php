@@ -2,6 +2,7 @@
 namespace Mouf\Utils\Common\Condition;
 
 use Mouf\Utils\Common\ConditionInterface\ConditionInterface;
+use Mouf\Utils\Value\ValueInterface;
 
 /**
  * This object casts a variable to a condition (class implementing ConditionInterface)
